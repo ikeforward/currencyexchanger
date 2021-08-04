@@ -1,0 +1,31 @@
+// @flow
+
+export type ConvertedCurrencyStateType = {
+    amount: number,
+    from: string,
+    to: string
+}
+
+export type HistoryRate = {
+    timestamp: string, 
+    rate: string
+}
+
+export type SavedConversion = {
+    event: {
+        amount: number,
+        from: string,
+        to: string
+    },
+    timestamp: number
+}
+
+export type CurrencyExchangerPropsType = {
+    rates: Array<{[string]: string}>,
+    historyRates: Array<HistoryRate>,
+    saveConversions: Array<SavedConversion>,
+    onTabChange: () => void,
+    onCurrencyConverted: (ConvertedCurrencyStateType) => void,
+    onExchangeHistoryChanged: (number) => void,
+    onConversionHistoryDelete: (string) => void
+}

@@ -1,0 +1,47 @@
+@import url('./../../GlobalVars.less');
+
+.currx-conversion-history {
+    .ant-table {
+        .ant-table-tbody {
+            .currx-conversion-history-actions {
+                display: none;
+
+                & > div {
+                    &:first-child {
+                        button {
+                            color: @CURRX_PRIMARY;
+                        }
+                    }
+
+                    &:last-child {
+                        button {
+                            color: @CURRX_WARN;
+                        }
+                    }
+
+                    button {
+                        border: none;
+                        box-shadow: none;
+                        font-weight: bold;
+                        background: transparent;
+                        padding-left: 0;
+                    }
+                }
+            }
+
+            .ant-table-row {
+                &:hover {
+                    .currx-conversion-history-actions {
+                        display: inline-flex;
+                    }
+                }
+
+                & > .ant-table-cell {
+                    &:last-child {
+                        height: 65px;
+                    }
+                }
+            }
+        }
+    }
+}

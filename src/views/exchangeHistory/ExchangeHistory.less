@@ -1,0 +1,20 @@
+@import './../../GlobalVars.less';
+
+.currx-exchange-history {
+    border-top: 1px solid @CURRX_BORDER;
+    padding-top: 20px;
+
+    .currx-section-options {
+        margin-bottom: 10px;
+
+        .currx-exchange-history-duration {
+            display: inline-block;
+            margin-right: 50px;
+        }   
+    } 
+
+    .currx-exchange-history-rate-table {
+        max-height: calc(100vh - 420px);
+        overflow-y: auto;
+    }
+}

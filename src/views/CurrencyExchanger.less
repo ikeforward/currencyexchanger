@@ -1,0 +1,37 @@
+@import url('./../GlobalVars.less');;
+
+.currx-home {
+    height: 100vh;
+
+    .ant-tabs {
+        height: 100%;
+
+        .ant-tabs-nav {
+            width: 900px;
+            margin: auto;
+            margin-bottom: 0;
+
+            &:before {
+                border-bottom: none;
+            }
+
+            .ant-tabs-extra-content {
+                margin-right:20px;
+
+                .anticon {
+                    color: @CURRX_PRIMARY;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .ant-tabs-content-holder {
+            background-color: @CURRX_BACKGROUND;
+
+            .ant-tabs-content {
+                width: 900px;
+                margin: auto;
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+@import './../../GlobalVars.less';
+
+.currx-input() {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    box-shadow: none !important;
+}
+
+.currx-currency-converter {
+    .currx-currency-converter-inputs {
+        & >  span {
+            display: inline-block;
+            width: 220px;
+            margin-right: 10px;
+
+            .ant-input-number {
+                .currx-input();
+                width: 100%;
+
+                &:focus {
+                    .currx-input();
+                }
+
+                .ant-input-number-handler-wrap {
+                    display: none;
+                }
+            }
+        }
+
+        .currx-switch-btn {
+            margin: 0 5px;
+        }
+
+        .currx-convert-btn:not(:disabled) {
+            background-color: @CURRX_PRIMARY;
+            color: white;
+        }
+    }
+
+    .currx-currency-converter-results {
+        margin: 20px 0;
+        height: 70px;
+
+        & > div {
+            margin: auto;
+            font-size: 10px;
+            width: 150px;
+
+            &:first-child{
+                font-size: 24px;
+                width: 300px;                
+
+                span {
+                    &:last-child {
+                        font-weight: bold;
+                        color: @CURRX_ACCENT;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CurrencyExchanger from './CurrencyExchanger'
 import { getExchangeRate, getExchangeRateHistory } from './../states/Api'
@@ -6,13 +6,10 @@ import { deleteConversion, saveNewConvert, getSavedConversions } from '../utils/
 
 const CurrencyExchangerContainer = () => {
 
+    const currentCurrencyRef = useRef()
+
     useEffect(() => {
         dispatch(getExchangeRate())
-
-        // Due to basic license of Nomics, maximum 1 request can be sent within 1 second
-        setTimeout(() => {
-            dispatch(getExchangeRateHistory())
-        }, 2000)
     // eslint-disable-next-line
     }, [])
 
@@ -23,10 +20,12 @@ const CurrencyExchangerContainer = () => {
 
     const onCurrencyConverted = (state) => {
         saveNewConvert(state)
+        dispatch(getExchangeRateHistory(7, state.from))
+        currentCurrencyRef.current = state.from
     }
 
     const onExchangeHistoryChanged = (duration) => {
-        dispatch(getExchangeRateHistory(duration))
+        dispatch(getExchangeRateHistory(duration, currentCurrencyRef.current))
     }
 
     const onConversionHistoryDelete = (key) => {

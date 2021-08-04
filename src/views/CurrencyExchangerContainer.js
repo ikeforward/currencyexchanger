@@ -7,6 +7,7 @@ import { deleteConversion, saveNewConvert, getSavedConversions } from '../utils/
 const CurrencyExchangerContainer = () => {
 
     const currentCurrencyRef = useRef()
+    const currentDurationRef = useRef()
 
     useEffect(() => {
         dispatch(getExchangeRate())
@@ -20,12 +21,13 @@ const CurrencyExchangerContainer = () => {
 
     const onCurrencyConverted = (state) => {
         saveNewConvert(state)
-        dispatch(getExchangeRateHistory(7, state.from))
+        dispatch(getExchangeRateHistory(currentDurationRef.current || 7, state.from))
         currentCurrencyRef.current = state.from
     }
 
     const onExchangeHistoryChanged = (duration) => {
         dispatch(getExchangeRateHistory(duration, currentCurrencyRef.current))
+        currentDurationRef.current = duration
     }
 
     const onConversionHistoryDelete = (key) => {
